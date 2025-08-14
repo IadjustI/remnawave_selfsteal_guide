@@ -15,7 +15,7 @@ Step 1 — Install Docker
 # Install Docker using the official convenience script
 `curl -fsSL https://get.docker.com | sh`
 
-Step 1 — Download required files
+Step 2 — Download required files
 
 # Create the project directory and enter it
 `mkdir -p /opt/remnawave && cd /opt/remnawave`
@@ -26,7 +26,7 @@ Step 1 — Download required files
 # Fetch the sample environment file
 `curl -o .env https://raw.githubusercontent.com/remnawave/backend/refs/heads/main/.env.sample`
 
-Step 2 — Configure .env
+Step 3 — Configure .env
 
 # Generate JWT secrets used for auth and API token signing
 `sed -i "s/^JWT_AUTH_SECRET=.*/JWT_AUTH_SECRET=$(openssl rand -hex 64)/" .env && sed -i "s/^JWT_API_TOKENS_SECRET=.*/JWT_API_TOKENS_SECRET=$(openssl rand -hex 64)/" .env`
@@ -45,14 +45,14 @@ FRONT_END_DOMAIN="panel.yourdomain.com"
 SUB_PUBLIC_DOMAIN="sub.yourdomain.com"
 # Change "panel.yourdomain.com" & "sub.yourdomain.com" on your domains
 
-Step 3 — Start the stack
+Step 4 — Start the stack
 
 # Start containers and tail logs with timestamps
 `docker compose up -d && docker compose logs -f -t`
 
-Step 4 — Point domain names to your server via DNS provider or registar
+Step 5 — Point domain names to your server via DNS provider or registar
 
-Step 5 — Caddy configuration
+Step 6 — Caddy configuration
 
 # Create a file called Caddyfile in the /opt/remnawave/caddy directory.
 `mkdir -p /opt/remnawave/caddy && cd /opt/remnawave/caddy && nano Caddyfile`
@@ -112,7 +112,7 @@ volumes:
 
 `docker compose up -d && docker compose logs -f -t`
 
-Step 6 — Remnawave Node configuration
+Step 7 — Remnawave Node configuration
 
 # Open your second vps server, for node you created before
 # Updating entire system and installing curl
@@ -133,8 +133,8 @@ Step 6 — Remnawave Node configuration
 
 ```
 APP_PORT=2222
-```
 SSL_CERT=CERT_FROM_MAIN_PANEL
+```
 
 Create docker-compose.yml file
 
@@ -152,7 +152,7 @@ services:
         env_file:
             - .env
 ```
-Step 7 — Selfsteal (SNI) Setup
+Step 8 — Selfsteal (SNI) Setup
 # Create the working directory and open Caddyfile for editing
 `mkdir -p /opt/selfsteel && cd /opt/selfsteel && nano Caddyfile`
 
@@ -237,7 +237,7 @@ printf '%s\n' '<!doctype html><meta charset="utf-8"><title>Selfsteal</title><h1>
   > /opt/html/index.html
 ```
 
-Step 8
+Step 9
 # Xray config (Reality) — update via Panel 
 Note: The Shadowsocks inbound is optional and may be safely removed in the future if not required.
 
