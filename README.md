@@ -183,6 +183,9 @@ services:
         env_file:
             - .env
 ```
+# Pulling container
+`docker compose up -d && docker compose logs -f`
+
 Step 8 — Selfsteal (SNI) Setup
 # Create the working directory and open Caddyfile for editing
 `mkdir -p /opt/selfsteel && cd /opt/selfsteel && nano Caddyfile`
