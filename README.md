@@ -198,9 +198,18 @@ https://{$SELF_STEAL_DOMAIN} {
 # Configure environment variables
 `nano .env`
 # Paste (replace steel.domain.com with your placeholder domain):
-# Domains
-`SELF_STEAL_DOMAIN=steel.domain.com`   # MUST match XRAY realitySettings.serverNames
-`SELF_STEAL_PORT=9443`                 # MUST match XRAY realitySettings.dest
+<table>
+  <tbody>
+    <tr>
+      <td><code>SELF_STEAL_DOMAIN=steel.domain.com</code></td>
+      <td>MUST match XRAY <code>realitySettings.serverNames</code></td>
+    </tr>
+    <tr>
+      <td><code>SELF_STEAL_PORT=9443</code></td>
+      <td>MUST match XRAY <code>realitySettings.dest</code></td>
+    </tr>
+  </tbody>
+</table>
 
 # Create docker-compose.yml
 `nano docker-compose.yml`
