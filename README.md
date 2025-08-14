@@ -112,6 +112,37 @@ volumes:
 
 `docker compose up -d && docker compose logs -f -t`
 
+# Remnawave Subscription Page
+Creating docker-compose.yml file
+`mkdir -p /opt/remnawave/subscription && cd /opt/remnawave/subscription && nano docker-compose.yml`
+
+# Paste docker-compose.yml file content
+```
+services:
+    remnawave-subscription-page:
+        image: remnawave/subscription-page:latest
+        container_name: remnawave-subscription-page
+        hostname: remnawave-subscription-page
+        restart: always
+        environment:
+            - REMNAWAVE_PANEL_URL=https://panel.com
+            - APP_PORT=3010
+            - META_TITLE="Subscription Page Title"
+            - META_DESCRIPTION="Subscription Page Description"
+        ports:
+            - '127.0.0.1:3010:3010'
+        networks:
+            - remnawave-network
+
+networks:
+    remnawave-network:
+        driver: bridge
+        external: true
+```
+# Start the container
+
+`docker compose up -d && docker compose logs -f`
+
 Step 7 — Remnawave Node configuration
 
 # Open your second vps server, for node you created before
