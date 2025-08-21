@@ -40,10 +40,12 @@ Step 3 — Configure .env
 Set domains
 
 `nano .env`
-# Search in .env this values
+Search in .env this values
+
 FRONT_END_DOMAIN="panel.yourdomain.com"
 SUB_PUBLIC_DOMAIN="sub.yourdomain.com"
-# Change "panel.yourdomain.com" & "sub.yourdomain.com" on your domains
+
+Change "panel.yourdomain.com" & "sub.yourdomain.com" on your domains
 
 Step 4 — Start the stack
 
@@ -57,7 +59,7 @@ Step 6 — Caddy configuration
 # Create a file called Caddyfile in the /opt/remnawave/caddy directory.
 `mkdir -p /opt/remnawave/caddy && cd /opt/remnawave/caddy && nano Caddyfile`
 
-# Paste the following configuration
+Paste the following configuration
 
 ```
 https://REPLACE_WITH_YOUR_DOMAIN {
@@ -73,11 +75,11 @@ https://SUBSCRIPTION_PAGE_DOMAIN {
 }
 ```
 
-# Create docker-compose.yml
+Create docker-compose.yml
 
 `cd /opt/remnawave/caddy && nano docker-compose.yml`
 
-# Paste the following configuration.
+Paste the following configuration.
 
 ```
 services:
@@ -113,10 +115,13 @@ volumes:
 `docker compose up -d && docker compose logs -f -t`
 
 # Remnawave Subscription Page
+
 Creating docker-compose.yml file
+
 `mkdir -p /opt/remnawave/subscription && cd /opt/remnawave/subscription && nano docker-compose.yml`
 
-# Paste docker-compose.yml file content
+Paste docker-compose.yml file content
+
 ```
 services:
     remnawave-subscription-page:
@@ -145,18 +150,19 @@ networks:
 
 Step 7 — Remnawave Node configuration
 
-# Open your second vps server, for node you created before
+Open your second vps server, for node you created before
+
 # Updating entire system and installing curl
 `apt update && apt upgrade && apt install curl`
 
 # Install Docker using the official convenience script
 `curl -fsSL https://get.docker.com | sh`
 
-# Create project directory
+Create project directory
 
 `mkdir -p /opt/remnanode && cd /opt/remnanode`
 
-# Configure the .env file
+Configure the .env file
 
 `nano .env`
 
@@ -190,7 +196,7 @@ Step 8 — Selfsteal (SNI) Setup
 # Create the working directory and open Caddyfile for editing
 `mkdir -p /opt/selfsteel && cd /opt/selfsteel && nano Caddyfile`
 
-# Paste the following
+Paste the following
 ```
 {
     https_port {$SELF_STEAL_PORT}
@@ -231,7 +237,9 @@ https://{$SELF_STEAL_DOMAIN} {
 ```
 # Configure environment variables
 `nano .env`
-# Paste (replace steel.domain.com with your placeholder domain):
+
+Paste (replace steel.domain.com with your placeholder domain):
+
 <table>
   <tbody>
     <tr>
@@ -245,10 +253,11 @@ https://{$SELF_STEAL_DOMAIN} {
   </tbody>
 </table>
 
-# Create docker-compose.yml
+Create docker-compose.yml
+
 `nano docker-compose.yml`
 
-# Paste:
+Paste:
 ```
 services:
   caddy:
@@ -270,10 +279,12 @@ volumes:
   caddy_config_selfsteal:
 ```
 
-# Launch and verify
+Launch and verify
+
 `docker compose up -d && docker compose logs -f -t`
 
-# Create the placeholder site
+Create the placeholder site
+
 ```
 mkdir -p /opt/html
 printf '%s\n' '<!doctype html><meta charset="utf-8"><title>Selfsteal</title><h1>It works.</h1>' \
