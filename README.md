@@ -261,7 +261,7 @@ Paste:
 ```
 services:
   caddy:
-    image: caddy:2.9.1
+    image: caddy:latest
     container_name: caddy-remnawave
     restart: unless-stopped
     volumes:
