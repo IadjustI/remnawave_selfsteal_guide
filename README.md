@@ -169,8 +169,8 @@ Configure the .env file
 # .env file content
 
 ```
-APP_PORT=2222
-SSL_CERT=CERT_FROM_MAIN_PANEL
+NODE_PORT=2222
+SECRET_KEY=CERT_FROM_MAIN_PANEL
 ```
 
 Create docker-compose.yml file
